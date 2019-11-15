@@ -11,7 +11,7 @@ padding:20px
 
 </style>
 
- <body>   
+ <body>  
 <button id="button" onclick="testOnClick()">Click me</button>
 <hr>
 <div id="contextMenu" oncontextmenu="testcontext()">context </div>         
@@ -19,8 +19,9 @@ padding:20px
 <input id="onKeyDown" type="text" onkeydown="testOnkeydown()">
 <p>skriv her</p>
 
+<p ondblclick="doubleClick()">dobbelkikk meg</p>
 
-    
+  
 
 
 <script>
@@ -40,9 +41,12 @@ function testOnkeydown () {
     alert ("tastetrykk")
     console.log ("tastetrykk")
 }
-</script
+function doubleClick () {
+alert ("hehehehe")
+console.log ("dobbelklikk")
 
->
+}
+</script
 </body>
 
 </html>
