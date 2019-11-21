@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <style>
+        .background-color: rgb(55, 102, 104);
+        .round {
+            border: 1px solid blueviolet;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> oppgave 8 </h1>
+    <input id="text" type="text" />
+    <h2 id="h2funk">skal fungere</h2>
+    <button onclick="dosomethinga(this)">A</button>
+    <button onclick="dosomethingb(this)">B</button>
+
+
+
+    <script>
+        var textinput = document.getElementById('text');
+        var h2ele = document.getElementById('h2funk');
+        var stil = document.getElementById('style');
+
+        function dosomethinga(clickedElement) {
+            textinput.style.backgroundColor = 'pink';
+            textinput.style.border = 'dashed';
+            textInput.value = "Trykket på knapp A";
+            textinput.style.borderRadius = '100%';
+        }
+
+        function dosomethingb(clickedElement) {
+            textinput.style.backgroundColor = 'black';
+            textinput.style.borderColor = 'green';
+            textinput.style.borderRadius = '1000px';
+
+        }
+    </script>
+
+
+</body>
+
+</html>

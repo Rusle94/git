@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+
+</head>
+
+<body>
+    <h2>Hight </h2>
+    <input id="arealS" type="range" min="0" max="1000" step="1" oninput=" calculate() " />
+    <div id="hTeller"></div>
+    <br> </br>
+    <h2>Width </h2>
+    <input id="omkretsS" type="range" min="0" max="1000" step="1" oninput=" calculate() " />
+    <div id="bTeller"></div>
+
+
+
+    <div id="resultat">
+        <br>
+        <p id="areal"></p>
+        </br>
+        <p id="omkrets"></p>
+    </div>
+
+
+    <script>
+        var arealSlider = document.getElementById("arealS");
+        var omkretsSlider = document.getElementById("omkretsS");
+        var resultat = document.getElementById("resultat");
+        var areal = document.getElementById("areal");
+        var omkrets = document.getElementById("omkrets");
+        var hTeller = document.getElementById("hteller");
+        var bTeller = document.getElementById("bteller");
+        calculate();
+        function calculate() {
+            var height = parseInt(arealSlider.value);
+            var width = parseInt(omkretsSlider.value);
+            console.log();
+            var areatext = 'areal: ' + height * width + ' m²';
+            var roundtext = 'omkrets: ' + (2 * height + 2 * width);
+            areal.innerHTML = areatext;
+            omkrets.innerHTML = roundtext;
+            width = ' width ' + width
+            resultat.style.width = width + 'px';
+            resultat.style.Height = height + 'px';
+        }
+    </script>
+</body>
+
+</html>
