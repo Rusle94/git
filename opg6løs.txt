@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+
+<body>
+    <p>Ferdighet 6 - Sette sammen tekst av flere deler og bruke dette til å bygge HTML dynamisk</p>
+
+    <input id="sizeSlider" type="range" min="100" max="500" step="10" oninput="showDiv()" />
+    <input id="sizeSliderBorder" type="range" min="1" max="10" step="1" oninput="showDiv()" />
+    <input id="bradius" type="range" min="10" max="50" step="1" oninput="showDiv()" />
+    <br /><input id="textInput" type="text" oninput="showDiv()" value="endre teksten!" />
+
+    <select id="colorChooser" onchange="showDiv()">
+        <option value="red">Red color</option>
+        <option selected value="green">Green color</option>
+        <option value="blue">Blue color</option>
+    </select>
+
+    <select id="colorChooserBorder" onchange="showDiv()" ;>
+       <option selected value="black">sort kant</option>
+       <option value="blue">blå kant</option>
+    </select>
+
+    <select id="bStyleChoise" onchange="showDiv()">
+
+            <option value="dashed">Dashed</option>
+            <option selected value="solid">Solid</option>
+            <option value="none">noneB</option>
+            
+
+
+ </select>
+    <div id="resultat"></div>
+    <div id="resultatHtml" style="font-family: monospace"></div>
+    <script>
+        var resultatDiv = document.getElementById('resultat');
+        var resultatHtmlDiv = document.getElementById('resultatHtml');
+        var sizeSlider = document.getElementById('sizeSlider');
+        var textInput = document.getElementById('textInput');
+        var colorChooser = document.getElementById('colorChooser');
+        var sizeSliderBorder = document.getElementById('sizeSliderBorder');
+        var bcolorChooser = document.getElementById('colorChooserBorder');
+        var bStyleChoise = document.getElementById('bStyleChoise');
+        var bradius = document.getElementById('bradius');
+        showDiv();
+        function showDiv() {
+            var size = sizeSlider.value;
+            var text = textInput.value;
+            var color = colorChooser.value;
+            var borderC = bcolorChooser.value;
+            var border = bStyleChoise.value;
+            var bSize = sizeSliderBorder.value;
+            var brad = bradius.value;
+            var backgroundColor = 'background-color: ' + color + ';';
+            var width = 'width: ' + size + 'px;';
+            var height = 'height: ' + size + 'px;';
+            var brad = 'border-radius:' + brad + 'px;'
+            var borderStyle = 'border: ' + border + " " + borderC + " " + bSize + 'px;'
+            var style = '"' +
+                brad + backgroundColor + width + height + borderStyle + '"';
+            console.log("< div style =" +
+                style + " > < /div >");
+            resultatDiv.innerHTML = `
+            <div style=${style}>${text}</div>
+            `
+            resultatHtmlDiv.innerHTML = style;
+        }
+    </script>
+</body>
