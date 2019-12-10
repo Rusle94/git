@@ -61,7 +61,7 @@
 
 <h2>it's X's turn!</h2>
 <div class="flex-container flex-column">
-    <div class="flex-container flex-wrap" id="bloard">
+    <div class="flex-container flex-wrap" id="board">
         <div class="square"></div>
         <div class="square"></div>
         <div class="square"></div>
@@ -82,33 +82,77 @@
                 '', '', '',
                 '', '', ''
             ];
+            
             render();
 
         };
 
 
         function render() {
+board.forEach (function(mark, index) {
 
-            board.forEach(function(mark, index) {
-                squares[index].textContent = mark;
-            });
-        };
+squares[index].textContent = mark; {
 
-        const squares = Array.from(document.querySelectorAll('#Board div'));
-        let board;
-        let turn = 'X';
-        document.getElementById('board').addEventListener('click', handleTurn)
+squares[idx].textContent = val;
+};
+});
+let board;
+let turn = "x";
+document.getElementById('board').addEventListener('click', handleTurn);
+   
+const squares = Array.from(document.querySelectorAll('#board div')); 
+    
 
-        function handleTurn(event) {
-            let idx = squares.findIndex(function(square) {
-                return square === event.target;
-            });
+   
+   
+   
+   function handleTurn(event) {
+let idx = squares.findIndex(function(square) {
+return square === event.target;
+});
 
-            board[idx] = turn;
-            console.log(board);
+board[idx] = turn;
+console.log (board);
+turn = turn === 'x' ? 'o' : 'x'; 
+
+render();
+};
+function render() {
+board.forEach(function(val, idx) {
+squares[idx].textContent = val;
+});
+// new code below
+messages.textContent = `It's ${turn}'s turn!`;
+};
+let board;
+let turn = 'X';
+// new code below
+win = board[0] && board[0] === board[1] && board[0] === board[2] ? board[0] : null;
+
+const winningCombos = [
+[0, 1, 2],
+[3, 4, 5],
+[6, 7, 8],
+[0, 3, 6], 
+[1, 4, 7],
+[2, 5, 8],
+[0, 4, 8],
+[2, 4, 6]
+];
+function getWinner() {
+let winner = null;
+winningCombos.forEach(function(combo, index) {
+if (board[combo[0]] && board[combo[0]] === board[combo[1]] && board[combo[0]] === board[combo[2]]) winner = board[combo[0]];
+});
+return winner;
+}; {
+        }
 
 
-        };
+
+
+        
+   
     </script>
     </body>
 

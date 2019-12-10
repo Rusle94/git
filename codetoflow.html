@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>CodeToFlow</title>
+</head>
+
+
+
+
+
+
+
+<body onload="load()">
+    <div id="out"></div>
+    <h2 id="out1"></h2>
+
+    <button id="vipps" onclick="kost(this)"></button>
+    <button id="vipps1" onclick="kost(this)"></button>
+    <button id="kont" onclick="kost(this)"></button>
+    <button id="kont1" onclick="kost(this)"></button>
+    <button id="kort" onclick="kost(this)"></button>
+    <button id="kort1" onclick="kost(this)"></button>
+</body>
+
+<script>
+    var vipps = document.getElementById("vipps");
+    var vipps1 = document.getElementById("vipps1");
+    var kont = document.getElementById("kont");
+    var kont1 = document.getElementById("kont1");
+    var kort = document.getElementById("kort");
+    var kort1 = document.getElementById("kort1");
+    var out1 = document.getElementById("out1");
+    var out2 = document.getElementById("out2");
+    var pressed;
+    kost();
+
+    function load() {
+        var out2 = out2;
+        var out2 = out1;
+        out2.innerHTML = 'velg betaling metode';
+        kort.innerHTML = 'kort';
+        kont.innerHTML = 'kont';
+        vipps.innerHTML = 'vipps';
+        kont1.style.display = 'none';
+        kort1.style.display = 'none';
+        vipps1.style.display = 'none';
+    }
+
+    function kost(payment) {
+        var output2 = out2;
+        var output1 = out1;
+
+
+        if (payment == kont) {
+            output1.innerHTML = '100kr please';
+            output2.innerHTML = 'gi kontant?';
+            kort.style.display = 'none';
+            kont.style.display = 'none';
+            kont1.style.display = 'gi 100kr lapp'
+            kont1.style.display = 'initial';
+            vipps.style.display = 'none'
+        }
+        if (payment == kont1) {
+            output2.innerHTML = "takk"
+            output1.innerHTML = "takk"
+            kont.innerHTML = "takk"
+            vipps.style.display = "none"
+        } else if (payment == kort) {
+            output1.innerHTML = '100kr';
+            output2.innerHTML = 'betale med kort?';
+            kont.style.display = "none";
+            kort.style.display = "none"
+            kort1.innerHTML = "put inn kort tast pin"
+            kort1.style.display = "initial"
+            vipps.style.display = "none"
+
+
+        } else if (payment == kort1) {
+            output2.innerHTML = "takk"
+            output1.innerHTML = "takk"
+            kort1.innerHTML = "takk"
+            vipps.style.display = "none"
+            alert("takk!")
+        } else if (payment == vipps) {
+            output1.innerHTML = "vips nr er 1111"
+            output2.innerHTML = "send penger"
+            kont.style.display = "none"
+            kort.style.display = "none"
+            vips.style.display = "none"
+            vipps1.style.display = "initial"
+        } else if (payment == vipps1) {
+            output2.innerHTML = "takk"
+            output1.innerHTML = "takk"
+            vipps1.innerHTML = "takk"
+            vips.style.display = "none"
+            alert("takk")
+        }
+
+    }
+</script>
+
+</html>

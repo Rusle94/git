@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="button" onclick="testOnk(this)">Klikk meg!</button>
+    <hr>
+    <div id="contextMenu" oncontextmenu="testOnk(this)">høyreklikk meg</div>
+    <hr>
+    <input id="onKeydown" type="text" onkeydown="testOnk(this)">
+    <p>skriv i meg</p>
+</body>
+
+<script>
+    let butn = document.getElementById("button")
+    let context = document.getElementById("contextMenu")
+    let key = document.getElementById("onKeydown")
+
+    function testOnk(klikk) {
+        if (butn == klikk) {
+            alert('knapp trykket!')
+            console.log("button pressed")
+
+
+        }
+        if (context == klikk) {
+            alert('knapp trykket!')
+            console.log("context")
+        }
+        if (key == klikk)
+            alert('knapp trykket!')
+        console.log("knapp trykket i text")
+    }
+</script>
+
+</html>

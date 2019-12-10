@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .block {
+        width: 100px;
+        height: 100px;
+        background-color: coral;
+    }
+    
+    .comb {
+        border-style: solid;
+        background-size: cover;
+        color: blue;
+        font-size: large;
+    }
+</style>
+
+
+
+<body>
+
+    <center>
+        <button onclick="id=show(this)" type="button" class="block">1</button>
+        <button onclick="id=show(this)" type="button" class="block">2</button>
+        <button onclick="id=show(this)" type="button" class="block">3</button>
+        <br>
+        <button onclick="id=show(this)" type="button" class="block">4</button>
+        <button onclick="id=show(this)" type="button" class="block">5</button>
+        <button onclick="id=show(this)" type="button" class="block">6</button>
+        <br>
+        <button onclick="id=show(this)" type="button" class="block">7</button>
+        <button onclick="id=show(this)" type="button" class="block">8</button>
+        <button onclick="id=show(this)" type="button" class="block">9</button>
+        <hr>
+    </center>
+
+    <center id="logg1" class="comb"></center>
+    <center id="logg2" class="comb"></center>
+
+    <script>
+        var codeRight = '6969';
+        var out1 = document.getElementById("logg1");
+        var out2 = document.getElementById("logg2");
+        var code;
+
+
+        function show(counter) {
+            out1.innerHTML += counter.innerHTML + '';
+            code = out1.innerHTML;
+            console.log(code, codeRight);
+
+            if (code == codeRight) {
+                out2.innerHTML = 'Open';
+            }
+
+            if (code.length >= 5) {
+
+                out1.innerHTML = '';
+                out2.innerHTML = '';
+            }
+
+        }
+    </script>
+
+
+
+
+</body>
