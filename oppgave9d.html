@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <title>ferdighet9d</title>
+
+
+
+</head>
+<style>
+    #changeme {
+        height: 500px;
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+
+
+    <select id='selectr' onchange="togglechange(this)">
+        <option></option>
+ <option id="black">black</option>
+ <option id="darkblue""darkblue">darkblue</option>
+ <option id ="grey">grey</option>
+ <option id="green""green">green</option>
+ <option id="red""red">red</option>
+   </select>
+    <hr>
+    <div id="changeme">!!!!!!!!!!!!!!!!!</div>
+</body>
+
+
+<script>
+    const box = document.getElementById("changeme");
+    let maling;
+    // colorize();
+    //togglechange();
+
+    function togglechange(selected) {
+        console.log(selected.value);
+        if (selected.value == "black") {
+            changeme.style.backgroundColor = "black"
+        }
+        if (selected.value == "darkblue") {
+            changeme.style.backgroundColor = "darkblue"
+        }
+        if (selected.value == "grey") {
+            changeme.style.backgroundColor = "grey"
+        }
+        if (selected.value == "green") {
+            changeme.style.backgroundColor = "green"
+        }
+        if (selected.value == "red") {
+            changeme.style.backgroundColor = "red"
+        } else {
+            output.style.color = 'black'
+        }
+
+    }
+</script>
+
+
+
+</html>
