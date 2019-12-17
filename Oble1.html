@@ -68,17 +68,35 @@
         <div class="page">
             <div class="header" id="headerDiv"></div>
             <div class="menu">trykk her!
-                <button onclick="dosomethinga()" id="dosomethinga">en</button>
-                <button onclick="dosomethingb()" id="2">to</button>
-                <button onclick="dosomethingc(this)" id="heiheihei">tre</button>
+
+                <button onclick=" dosomethinga() " id="dosomethinga ">en</button>
+                <button onclick="dosomethingb() " id="2 ">to</button>
+                <button onclick="dosomethingc(this) " id="heiheihei ">tre</button>
+                <div id="output"></div>
+                <select onchange="makeButton(this)">
+                      <option>Lag en button!</option>
+                      <option>trykk meg!</option>
+                  </select>
             </div>
-            <div id=content class="content"></div>
+            <div id=content class="content "></div>
 
         </div>
 
         <script>
             var counter = 0;
             var output = document.getElementById('content');
+            let outputDiv = document.getElementById("output");
+
+            function makeButton(fromSelect) {
+                console.log("makeButton run" + fromSelect.value);
+                outputDiv.innerHTML = `
+                <button onclick="getAlert("YO!")">denne lagde du!</button>
+            `;
+            }
+
+            function getAlert(recievedParameter) {
+                alert(recievedParameter);
+            }
 
             function dosomethinga() {
                 console.log('Endrer farge til sort');
@@ -88,7 +106,7 @@
             function dosomethingb() {
                 counter++;
                 if (counter == 5) {
-                    alert("du trykket 5 ganger!");
+                    alert("du trykket 5 ganger! ");
                     counter = 0
                 }
             }
@@ -103,4 +121,4 @@
 
 </body>
 
-</html>
+</html
