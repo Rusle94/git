@@ -1,38 +1,44 @@
 <div id="content">
 </div>
+<style>
+    body {
+        user-select: none;
+    }
+</style>
+
 
 <script>
-    // hjelpevariable for både view og controller
-
-    var contentDiv = document.getElementById('content');
+    let output = document.getElementById("content")
 
     // model
     let clickedBar = 'ingen'
     let numbers = [7, 3, 1, 5, 8];
-    let isbuttondisabled
-        // view
-    show();
+    let isbuttondisabled = true;
 
-    function show() {
-        let svgInnerHtml = '';
+    display();
+    // view
+    function display() {
+        let toggle = isbuttondisabled == true ? 'disabled' : 'enabled'
+            // denne slår på og fjærner knapper
+            // i = 0 
+        let svgOutput = '';
         for (let i = 0; i < numbers.length; i++) {
             let numberOfbar = i + 1;
-            svgInnerHtml += createBar(numbers[i], i + 1);
+            svgOutput += createBar(numbers[i], i + 1);
         }
-        contentDiv.innerHTML = `
+        output.innerHTML = `
             <svg id="chart" width="500" viewBox="0 0 80 60">
-                ${svgInnerHtml}
+                ${svgOutput}
             </svg><br/>
-            Valgt stolpe: <i>ingen</i>
+            Valgt stolpe: <i id="outText">${svgOutput}</i>
             <br />
-            Verdi:
-            <input type="number" min="1" max="10" />
-            <button>Legg til stolpe</button>
-            <button disabled>Endre valgt stolpe</button><br />
-            <button disabled>Fjerne valgt stolpe</button>
+            Verdi: <input id="value" type="number" min="1" max="10" selected value = 1>            
+            <button id="addBtn" onclick="action('add')">Legg til stolpe</button>
+            <button id="removeBtn" ${toggle} onclick="action('remove')" >fjærner valgt stolpe</button>
+            <button id="changeBtn" ${toggle} onclick="action('edit')">Endre valgt stolpe</button>
             `;
     }
-
+    // outputter stoplene og setter verdi
     function createBar(number, barNo) {
         const width = 8;
         const spacing = 2;
@@ -41,31 +47,36 @@
         let y = 60 - height;
         let border = 0;
         let color = calcColor(1, 10, barNo);
-        if (clickedBar != 'ingen' && numberOfbar == clickedBar)
+        if (clickedBar != 'ingen' && barNo == clickedBar)
             border = 1;
-
-        return `<rect onclick ="onklikk(${barNo})"
+        // her returner jeg stoplene Husk og spørr noen!
+        return `<rect onclick ="choosenBar(${barNo})"
          width="${width}"
           height="${height}" 
      x="${x}"
      y="${y}"
      fill="${color}"
-    stroke = "black"
-             stroke-width="${border}""></rect>`;
+     stroke-width="${border}"
+        stroke = "black">
+        </rect>`;
 
     }
 
-
+    // lager og sender style til barene
     function calcColor(min, max, val) {
-        var minHue = 240,
-            maxHue = 0;
-        var curPercent = (val - min) / (max - min);
-        var colString = "hsl(" + ((curPercent * (maxHue - minHue)) + minHue) + ",100%,50%)";
+        let minHue = 0,
+            maxHue = 240;
+
+        let curPercent = (val - min) / (max - min)
+        let colString = "hsl(" + ((curPercent * (maxHue - minHue)) + minHue) + ",100%,50%)";
         return colString;
+
+        //display outputter, blir kaldt flere ganger nedover får og få alt i rekkefølge som det skal
         display();
     }
 
-    // controller (ingenting her ennå)
+    // controller
+    // function får valgt stolpe remove edit og outputt av storlse
     function choosenBar(numberOfbar) {
         if (clickedBar == numberOfbar) {
             isbuttondisabled = true;
@@ -79,7 +90,7 @@
         display()
     }
 
-    function Action(typeAction) {
+    function action(typeAction) {
         let inputValue = document.getElementById("value")
 
 
@@ -93,18 +104,42 @@
                 return alert("kan ikke ha mere en 8 stolper=(")
 
 
-
             }
+            // dytter input i array
+            numbers.push(parseInt(inputValue.value))
+            display();
 
+
+        }
+
+        //
+        if (typeAction == 'edit') {
+            if (inputValue.value == 0 || inputValue > 10) {
+                return alert('value må være en til 10')
+            }
+            // redigerer i array 
+            numbers[parseInt(clickedBar) - 1] = parseInt(inputValue.value);
+
+            display();
+
+        }
+
+        if (typeAction == 'remove') {
+            if (numbers.length == 1) {
+                clickedbar = 'Ingen'
+                isbuttondisabled = true;
+            }
+            //splice remover et tall eller en i og fjærner i arayet
+            numbers.splice(parseInt(clickedBar) - 1, 1)
+            display();
 
         }
 
 
 
 
-
-
     }
 </script>
+</body>
 
 </html>
