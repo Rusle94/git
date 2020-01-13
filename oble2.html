@@ -12,15 +12,15 @@
 
     // model
     let clickedBar = 'ingen'
-    let numbers = [7, 3, 1, 5, 8];
+    let numbers = [7, 3, 1, 5, 8]; // ARRAY PÅ FERDIGSATT STØRLSE PÅ BARS
     let isbuttondisabled = true;
 
     display();
     // view
     function display() {
-        let toggle = isbuttondisabled == true ? 'disabled' : 'enabled'
-            // denne slår på og fjærner knapper
-            // i = 0 
+        let toggle = isbuttondisabled == true ? 'disabled' : 'enabled' // ternary operator, hvis true er disabled hvis ikke anabled
+            // denne slår på og fjærner markering rett og slett 
+            // i = 0 så  1 lenge nummers arrayet 9 + så hadde i vært 9
         let svgOutput = '';
         for (let i = 0; i < numbers.length; i++) {
             let numberOfbar = i + 1;
@@ -43,13 +43,13 @@
         const width = 8;
         const spacing = 2;
         let x = (barNo - 1) * (width + spacing);
-        let height = number * 10;
+        let height = number * 6;
         let y = 60 - height;
         let border = 0;
         let color = calcColor(1, 10, barNo);
         if (clickedBar != 'ingen' && barNo == clickedBar)
             border = 1;
-        // her returner jeg stoplene Husk og spørr noen!
+        // sender tilbake til svgoutput  jeg stoplene Husk 
         return `<rect onclick ="choosenBar(${barNo})"
          width="${width}"
           height="${height}" 
@@ -76,7 +76,7 @@
     }
 
     // controller
-    // function får valgt stolpe remove edit og outputt av storlse
+    // viser kun markert stolpe 
     function choosenBar(numberOfbar) {
         if (clickedBar == numberOfbar) {
             isbuttondisabled = true;
@@ -113,23 +113,23 @@
         }
 
         //
+        // redigerer i array
         if (typeAction == 'edit') {
             if (inputValue.value == 0 || inputValue > 10) {
                 return alert('value må være en til 10')
             }
-            // redigerer i array 
             numbers[parseInt(clickedBar) - 1] = parseInt(inputValue.value);
 
             display();
 
         }
-
+        // fjern stople function 
         if (typeAction == 'remove') {
             if (numbers.length == 1) {
                 clickedbar = 'Ingen'
                 isbuttondisabled = true;
             }
-            //splice remover et tall eller en i og fjærner i arayet
+            //splice remover et tall eller en i og fjærner i arayet, plukker ut nummer verdi i arrayet 
             numbers.splice(parseInt(clickedBar) - 1, 1)
             display();
 

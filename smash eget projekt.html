@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Smash Info!</title>
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url(https://i0.wp.com/www.thumbsticks.com/wp-content/uploads/2019/04/super-smash-bros-ultimate-smash-ball.jpg?w=1280&ssl=1);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        
+        .dropbtn {
+            background-color: #4CAF50;
+            size: 1000px;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .dropbtn:hover,
+        .dropbtn:focus {
+            background-color: #2980B9;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        div.menu {
+            height: 100px;
+            width: 200px;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #ddd
+        }
+        
+        .show {
+            display: block;
+        }
+        
+        .jokerdiv {
+            content: url(https://www.ssbwiki.com/images/5/5c/Joker_SSBU.png);
+            border-style: ridge;
+        }
+    </style>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#Joker" onclick="(" ")>"Joker</a>
+                <a href="#pT ">Pokemon Trainer</a>
+        </div>
+
+
+    </div>
+
+
+
+
+</body>
+
+<script>
+    //model
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content ");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    www
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
+
+    //view
+    function display() {
+        let none = '';
+        page.innerHTML = `  
+        `
+    }
+
+    //controller
+    function myFunction() {
+        document.getElementById("myDropdown ").classList.toggle("show ");
+    }
+
+    function jokershow() {
+        document.getElementById("jokerdiv ").classList.toggle("show ");
+    }
+</script>
+
+</html>
