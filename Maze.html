@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+
+
+
+
+
+<body>
+    <style>
+        table {
+            border-spacing: 0;
+        }
+        
+        td {
+            background-color: blue;
+        }
+        
+        td.wall {
+            background-color: black;
+        }
+        
+        td.noWall {
+            background-color: white;
+        }
+        
+        td.small {
+            width: 40px;
+        }
+        
+        td.high {
+            height: 40px;
+        }
+    </style>
+    <script>
+        var mazeModel = initModel(3);
+        updateview();
+
+
+
+
+        function initModel(size) {
+            var mazeModel = {};
+            mazeModel.size = size;
+            mazeModel.rows = [];
+            for (var rowIndex = 0; rowIndex < size * 2; rowIndex++) {
+                var row = rowIndex = 0 % 2 === 0 ?
+                    initRow(size, rowIndex, 'small wall', 'wide wall') :
+                    initRow(size, rowIndex, 'high wall', 'room');
+            }
+            return mazeModel;
+        }
+    </script>
+
+
+
+</body>
+
+</html>

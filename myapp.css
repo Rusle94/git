@@ -1,0 +1,17 @@
+body {}
+
+table.mainList {
+    border-collapse: collapse;
+}
+
+table,
+tr,
+td {
+    border: 1px solid gray;
+    padding: 4px;
+}
+
+tr.header {
+    background-color: blue;
+    color: white;
+}
