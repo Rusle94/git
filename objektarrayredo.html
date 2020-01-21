@@ -35,13 +35,14 @@
 </head>
 
 <body>
-    <input type="date" /> oppgaver
+
 
     <table id="tasksTable"></table>
     <p>
+
         <input id="nameDescription" type="text" />legg til person</input>
         <input id="taskDescription" type="text" /><button onclick="addTask()">legg til oppgave</button>
-
+        <input id="dateDescription" type="date" />
 
 
     </p>
@@ -49,33 +50,42 @@
         //model
         var tasks = [{
                 description: 'handle til middag',
-                isDone: true
+                isDone: true,
+                name: 'aleks',
+                date: 'date',
             },
 
             {
                 description: 'lage middag',
-                isDone: false
+                isDone: false,
+                name: 'aleks',
+                date: 'date',
             },
 
             {
                 description: 'spise middag',
-                isDone: false
+                isDone: false,
+                name: 'aleks',
+                date: 'date',
             },
         ];
 
         //controller
-        var taskDescriptionInput = document.getElementById('taskDescription');
-        var nameDescriptioninput = document.getElementById('nameDescription');
+        let taskDescriptionInput = document.getElementById('taskDescription');
+        let nameDescriptioninput = document.getElementById('nameDescription');
+        let inputDate = document.getElementById('dateDescription')
+        let d = new Date();
+
 
         function addTask() {
             tasks.push({
 
-
-                names: nameDescriptioninput.value,
+                date: inputDate.value,
+                name: nameDescriptioninput.value,
                 description: taskDescriptionInput.value,
-
                 isdone: false
             });
+            inputDate.value = '';
             nameDescriptioninput.value = '';
             taskDescriptionInput.value = '';
             show();
@@ -90,15 +100,18 @@
         function show() {
             let html = `
             <tr>
+                            <th>tid</th>
                             <th>person</th>
                             <th>Oppgave</th>
-                            <th></th>
                             <th>Gjort</th>
+                            <th></th>
+                            
                             
                         </tr>`;
             for (let i = 0; i < tasks.length; i++) {
                 const task = tasks[i];
-
+                const name = nameDescription[i];
+                const date = dateDescription[i];
                 html += createHtmlRow(i);
 
             }
@@ -111,7 +124,8 @@
             const checkedHtml = task.isDone ? 'checked="checked"' : '';
             if (!task.editMode)
                 return `<tr>
-            <td>${task.nameDescription}</td>  
+            <td>${task.date}</td>
+            <td>${task.name}</td>  
             <td>${task.description}</td>
             <td><input onchange="changeIsDone(this, ${i})" type="checkbox" ${checkedHtml}/></td>
             <td><button onclick="deleteTask(${i})">slett</button>
@@ -119,7 +133,8 @@
             </td>
                </tr> `;
             return `<tr>
-            <td><input id="nameDescription${i}" type="text" value="${task.name}"</td>
+            <td><input id="nameDescription${i}" type="text" value="${name.nameDescription}"</td>
+            <td><input id="dateDescription${i}" type="date" value="${task.dateDescription}"</td>
             <td><input id="editDescription${i}" type="text" value="${task.description}"</td>
             <td><input onchange="changeIsDone(this, ${i})" type="checkbox" ${checkedHtml}/></td>
             <td><button onclick="deleteTask(${i})">Slett</button>
@@ -148,8 +163,11 @@
             const id = `editDescription${index}`;
             const inputTag = document.getElementById(id);
             const task = tasks[index]
-            tasks.description = inputTag.value;
-            tasks.editMode = false;
+            const name = nameDescription[index]
+            const date = dateDescription[index]
+            task.description = inputTag.value;
+            task.nameDescription = inputTag.value;
+            task.editMode = false;
             show();
         }
     </script>
